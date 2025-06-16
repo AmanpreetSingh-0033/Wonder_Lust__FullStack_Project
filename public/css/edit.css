@@ -1,0 +1,162 @@
+/* === Form Card Styling === */
+.edit-form-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(217, 4, 41, 0.1);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.edit-form-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 20px 50px rgba(217, 4, 41, 0.2);
+}
+
+/* === Headings === */
+.edit-form-card h2 {
+  font-weight: bold;
+  color: #d90429;
+  text-shadow: 1px 1px 2px rgba(217, 4, 41, 0.2);
+}
+
+/* === Input & Textarea Styling === */
+.fancy-input {
+  width: 100%;
+  padding: 10px 15px;
+  margin-top: 5px;
+  font-size: 16px;
+  border: 1px solid rgba(217, 4, 41, 0.3);
+  border-radius: 12px;
+  background-color: #fefefe;
+  box-shadow: 0 4px 10px rgba(217, 4, 41, 0.1);
+  transition: all 0.3s ease;
+}
+
+.fancy-input:focus {
+  border-color: #d90429;
+  outline: none;
+  background: #fff0f0;
+  box-shadow: 0 0 10px rgba(40, 37, 37, 0.63), 0 0 20px rgba(217, 4, 41, 0.15);
+  transform: scale(1.01);
+}
+
+
+#previousImage {
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+#previousImage img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(217, 4, 41, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    object-fit: cover;
+}
+
+#previousImage img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 28px rgba(217, 4, 41, 0.3);
+}
+
+/* Responsive scaling */
+@media (max-width: 576px) {
+    .current-image-heading {
+        font-size: 1.2rem;
+    }
+
+    #previousImage img {
+        max-height: 200px;
+    }
+}
+
+
+
+
+/* === Textarea === */
+textarea.fancy-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* === Submit Button === */
+.btn-danger {
+  background-color: #d90429;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  color: white;
+  box-shadow: 0 5px 15px rgba(217, 4, 41, 0.3);
+}
+
+.btn-danger:hover {
+  background-color: #a50320;
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(217, 4, 41, 0.5);
+}
+
+/* === Labels === */
+label {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+/* === Responsive Padding === */
+@media (max-width: 576px) {
+  .edit-form-card {
+    padding: 1.5rem;
+  }
+}
+
+
+
+
+
+.category-checkbox-group {
+    padding: 10px;
+    background-color: #fff5f5;
+    border-radius: 12px;
+    border: 1px solid #ffcccc;
+}
+
+.custom-checkbox {
+    position: relative;
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #ffe6e6;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    font-weight: 500;
+    color: #b30000;
+    box-shadow: 0 2px 6px rgba(255, 0, 0, 0.1);
+}
+
+.custom-checkbox:hover {
+    background-color: #ffcccc;
+    transform: scale(1.05);
+}
+
+.custom-checkbox input {
+    display: none;
+}
+
+.custom-checkbox .checkmark {
+    display: inline-block;
+    font-size: 14px;
+}
+
+.custom-checkbox input:checked + .checkmark {
+    background-color: #ff4d4d;
+    color: white;
+    border-radius: 20px;
+    padding: 6px 10px;
+}

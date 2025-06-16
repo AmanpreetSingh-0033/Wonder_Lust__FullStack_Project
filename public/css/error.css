@@ -1,0 +1,129 @@
+/* Structure for vertical layout */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #ffdde1, #ee9ca7);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Sticky navbar (ensure your nav has class `.navbar`) */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* Error content styles */
+.error-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 2rem 1rem;
+}
+
+.error-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.error-card:hover {
+  transform: perspective(800px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+}
+
+.error-icon {
+  font-size: 4rem;
+  color: #dc3545;
+  animation: pulse 2s infinite;
+}
+
+
+
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.neon-text {
+  color: #fff;
+  text-shadow:
+    0 0 10px #ff4b2b,
+    0 0 20px #ff4b2b,
+    0 0 30px #ff4b2b;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.glow-button {
+  background-color: #ff416c;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  box-shadow: 0 0 15px #ff4b2b;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.glow-button:hover {
+  background-color: #ff4b2b;
+  box-shadow:
+    0 0 15px #ff4b2b,
+    0 0 30px #ff416c,
+    0 0 45px #ff4b2b;
+  transform: scale(1.05);
+}
+
+/* Footer should stay at bottom */
+footer {
+  padding: 1rem 0;
+  background: #fff;
+  text-align: center;
+  z-index: 2;
+}
+
+
+.error-message {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-shadow: 
+    0 0 5px rgba(255, 75, 43, 0.4),
+    0 0 10px rgba(255, 75, 43, 0.3),
+    0 0 20px rgba(255, 65, 80, 0.2);
+  animation: fadeInUp 1.5s ease-out;
+  max-width: 90%;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Smooth entrance animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

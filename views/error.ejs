@@ -1,0 +1,22 @@
+<% layout("../layouts/boilerplate") %>
+
+
+
+    <body>
+        <div class="page-wrapper">
+            
+            <main class="error-container text-center">
+                <div class="error-card">
+                    <div class="error-icon mb-4">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h1 class="neon-text mb-3">Status Code : <%=statusCode%></h1>
+                    <p class="error-message mb-4"><%= message %></p>
+                    <a href="/listings" class="glow-button">Go Back Home</a>
+                </div>
+            </main>
+
+            <!-- Footer (already in your layout) -->
+        </div>
+
+    </body>

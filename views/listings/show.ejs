@@ -1,0 +1,168 @@
+<% layout("../layouts/boilerplate") %>
+
+    <script>
+        let mapToken = "<%=process.env.MAP_TOKEN%>"
+        let live_coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
+        let listing  = <%- JSON.stringify(listing) %>
+    </script>
+
+    <body>
+        <div class="container my-5 px-2 px-sm-4">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10 offset-lg-1">
+
+                    <div class="listing-detail-card p-4">
+
+                        <h2 class="listing-title mb-3">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            <span class="animated-title">
+                                <%= listing.title %>
+                            </span>
+                        </h2>
+
+                        <img src="<%= listing.image.url %>" alt="<%= listing.title %>"
+                            class="img-fluid listing-img mb-4">
+
+                        <h5 class="listing-owner text-muted mb-3">
+                            Owned by: <%= listing.owner.username %>
+                        </h5>
+
+                        <p class="listing-desc mb-3">
+                            <%= listing.description %>
+                        </p>
+                        <h4 class="text-danger fw-semibold mb-4">₹ <%= listing.price.toLocaleString('en-IN') %>/night
+                        </h4>
+
+                        <div class="d-flex justify-content-between mb-4 flex-wrap">
+                            <span><strong>Location:</strong>
+                                <%= listing.location %>
+                            </span>
+
+                            <span><strong>Country:</strong>
+                                <%= listing.country %>
+                            </span>
+                        </div>
+
+                        <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
+                            <div class="d-flex gap-3">
+
+                                <form action="/listings/<%= listing._id %>/edit">
+                                    <button class="btn btn-outline-danger">Edit</button>
+                                </form>
+
+                                <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE"
+                                    onsubmit="return confirm('Are you sure?');">
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <% if (currUser) { %>
+            <div class="container px-2 px-sm-4">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10 offset-lg-1">
+                        <div class="reviewForm">
+
+                            <form action="/listings/<%= listing._id %>/reviews" method="post" novalidate>
+
+                                <h2>Leave a Review</h2>
+
+                                <div class="star-rating-wrapper mb-3">
+                                    <label class="form-label">Rating:</label>
+                                    <div class="star-rating" id="starRating">
+                                        <% for (let i=1; i <=5; i++) { %>
+                                            <i class="fa-regular fa-star" data-index="<%= i %>"></i>
+                                            <% } %>
+                                    </div>
+                                    <input type="hidden" name="review[rating]" id="rating" value="0">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Comment:</label>
+                                    <textarea name="review[comment]" id="comment" class="form-control"
+                                        placeholder="Add your honest reviews :)" required rows="4"></textarea>
+                                    <div class="invalid-feedback">Add some review first :)</div>
+                                </div>
+
+                                <button type="submit" class="btn btn-submit-review">Submit</button>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+
+
+                <div class="container px-2 px-sm-4 mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-10 offset-lg-1">
+
+                            <% if(listing.reviews.length> 0) {%>
+                                <h3 class="review-heading">All Reviews</h3>
+
+                                <% } %>
+
+                                    <div class="allReviewContainer">
+                                        <div class="reviewContainer">
+                                            <% for (let review of listing.reviews) { %>
+
+                                                <div class="review-card">
+                                                    <div class="review-header">
+
+                                                        <span class="review-name"><i class="fas fa-user"></i>
+                                                            <%= review.author.username %>
+                                                        </span>
+
+                                                        <span class="review-rating">
+                                                            <% for(let i=1; i<=5; i++) { %>
+                                                                <i
+                                                                    class="fas fa-star <%= i <= review.rating ? 'text-warning' : 'text-muted' %>"></i>
+                                                                <% } %>
+                                                        </span>
+
+                                                    </div>
+
+                                                    <p class="review-comment mt-2">
+                                                        <%= review.comment %>
+                                                    </p>
+
+                                                    <form method="POST"
+                                                        action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                                                        onsubmit="return confirm('Are you sure?');">
+                                                        <button
+                                                            class="btn btn-danger btn-sm mt-3 align-self-end">Delete</button>
+                                                    </form>
+
+                                                </div>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                </div>  
+                <hr style="margin-top: 5px;">
+
+                <div class="container my-5">
+                    <div class="map-section">
+                        <h2 class="map-title text-center mb-4">
+                            <i class="fas fa-map-marked-alt me-2"></i> Location Map
+                        </h2>
+                        <div id="map" class="custom-map-container"></div>
+                    </div>
+                </div>
+
+
+
+                <script src="/js/map.js"></script>
+                <script src="/js/reviewForm.js"></script>
+
+    </body>
+

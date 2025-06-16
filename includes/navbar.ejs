@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg custom-navbar shadow-sm sticky-top">
+  <div class="container-fluid">
+
+    <!-- Logo -->
+    <a class="navbar-brand nav-logo" href="/">
+      <i class="fa-solid fa-compass"></i> Wander-Lust
+    </a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Content -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+
+      <!-- Left: Home -->
+      <ul class="navbar-nav mx-auto text-center flex-column flex-lg-row align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" href="/listings">
+            <i class="fa-solid fa-house"></i> Home
+          </a>
+           <li class="nav-item">
+          <a class="nav-link" href="/listings/aboutUs">
+            <i class="fa-solid fa-address-card"></i> About us
+          </a>
+        </li>
+      </ul>
+
+      <!-- Center: Search Bar -->
+      <form class="d-flex flex-column flex-lg-row align-items-center justify-content-center mx-auto search-form-responsive"
+            role="search" action="/listings/search" method="GET">
+        <input class="form-control search-input mb-2 mb-lg-0 me-lg-2" type="search" name="q"
+               placeholder="Search listings..." aria-label="Search">
+        <button class="btn btn-danger search-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+
+      <!-- Right: Airbnb and Auth -->
+      <ul class="navbar-nav text-center ms-auto flex-column flex-lg-row align-items-center auth-links">
+        <li class="nav-item mb-2 mb-lg-0 me-lg-3">
+          <a class="nav-link" href="/listings/new">
+            <i class="fa-solid fa-plus"></i> Airbnb your home
+          </a>
+        </li>
+
+        <% if (!currUser) { %>
+          <li class="nav-item mb-2 mb-lg-0 me-lg-2">
+            <a class="btn btn-outline-danger btn-sm px-3" href="/signup">
+              <i class="fa-solid fa-user-plus"></i> Sign Up
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-danger btn-sm px-3" href="/login">
+              <i class="fa-solid fa-right-to-bracket"></i> Log In
+            </a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="btn btn-outline-danger btn-sm px-3" href="/logout">
+              <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

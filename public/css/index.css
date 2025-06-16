@@ -1,0 +1,140 @@
+/* === Listing Card Styles === */
+
+.filters-wrapper .filters a {
+  text-decoration: none;
+}
+
+.listingLinks {
+  display: inline;
+  text-decoration: none;
+}
+
+.custom-card {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.custom-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(217, 4, 41, 0.15);
+  border: 1px solid #fcd5d8;
+}
+
+.custom-card img {
+  height: 200px;
+  object-fit: cover;
+  transition: all 0.4s ease;
+}
+
+.custom-card:hover img {
+  filter: brightness(1.05) saturate(1.2);
+}
+
+.custom-card .card-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.custom-card:hover .card-title {
+  color: #d90429;
+}
+
+.custom-card .price-tag {
+  font-weight: bold;
+  color: #d90429;
+  background-color: #ffe6e9;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* === Filter Panel Styles === */
+.filters-wrapper {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 0;
+  box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0 10px;
+  gap: 1rem;
+  scrollbar-width: none;
+}
+
+.filter {
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 10px 15px;
+  min-width: 80px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.filter:hover {
+  background-color: #ffe6e9;
+  color: #d90429;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(217, 4, 41, 0.15);
+}
+
+.filter i {
+  font-size: 1.4rem;
+  color: #f1405f;;
+  margin-bottom: 5px;
+}
+
+.filter p {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Hide scrollbar */
+.filters-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.filters-wrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .custom-card img {
+    height: 160px;
+  }
+
+  .filters {
+    gap: 0.75rem;
+  }
+
+  .filter {
+    padding: 8px 12px;
+    min-width: 70px;
+  }
+
+  .filter i {
+    font-size: 1.2rem;
+  }
+
+  .filter p {
+    font-size: 0.75rem;
+  }
+}

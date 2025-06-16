@@ -1,0 +1,122 @@
+<% layout("../layouts/boilerplate") %>
+
+
+    <body>
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <div class="edit-form-card p-4">
+                        <h2 class="text-center mb-4 text-danger">✏️ Edit Your Listing</h2>
+
+                        <form action="/listings/<%= listing._id %>?_method=PUT" method="POST" novalidate
+                            class="needs-validation" enctype="multipart/form-data">
+
+                            <div class="form-group mb-3">
+                                <label class="form-label">
+                                    <h5>🏷️ Title</h5>
+                                </label>
+                                <input type="text" name="listing[title]" class="form-control fancy-input" required
+                                    value="<%= listing.title %>">
+                                <div class="valid-feedback">
+                                    Looks good !
+                                </div>
+                                <div class="invalid-feedback">
+                                    Add a cachy title :)
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="form-label">
+                                    <h5>📝 Description</h5>
+                                </label>
+                                <textarea name="listing[description]" class="form-control fancy-input" rows="3"
+                                    required><%= listing.description %></textarea>
+                                <div class="invalid-feedback">
+                                    Enter valid description (shorter)
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="form-label">
+                                    <h5>💰 Price</h5>
+                                </label>
+                                <input type="number" name="listing[price]" class="form-control fancy-input" required
+                                    value="<%= listing.price %>">
+                                <div class="invalid-feedback">
+                                    Enter valid price(positive price)
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="" class="form-label">
+                                    <h5>🖼️ Current Image</h5>
+                                </label>
+                                <div id="previousImage">
+                                    <img src="<%= originalImageUrl %>" alt="original image">
+                                </div>
+
+                                <label class="form-label">📁 Upload New Image</label>
+                                <input type="file" name="listing[image]" class="form-control fancy-input"
+                                    value="<%= listing.image.url %>">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="form-label">
+                                    <h5>📍 Location</h5>
+                                </label>
+                                <input type="text" name="listing[location]" class="form-control fancy-input" required
+                                    value="<%= listing.location %>">
+                                <div class="invalid-feedback">
+                                    Enter valid location
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label class="form-label">
+                                    <h5>🌍 Country</h5>
+                                </label>
+                                <input type="text" name="listing[country]" class="form-control fancy-input" required
+                                    value="<%= listing.country %>">
+                                <div class="invalid-feedback">
+                                    Enter valid country
+                                </div>
+                            </div>
+
+
+                            <div class="form-group mb-4">
+                                <label class="form-label d-block">
+                                    <h5>📦 Select Categories</h5>
+                                </label>
+                                <div class="category-checkbox-group d-flex flex-wrap gap-2">
+
+                                    <% const categories=["Rooms", "City" , "Mountains" , "Castels" , "Pools" , "Beaches"
+                                        , "Farms" , "Arctic" , "Boats" , "Houses" , "Hotels" , "Kids" , "Wonder Land"
+                                        , "Play Station" , "Clubs" , "Trending" ]; %>
+
+                                        <% categories.forEach(cat=> { %>
+                                            <label class="custom-checkbox">
+                                                <input type="checkbox" name="listing[category]" value="<%= cat %>"
+                                                    <%=listing.category.includes(cat) ? "checked" : "" %> />
+                                                <span class="checkmark">
+                                                    <%= cat %>
+                                                </span>
+                                            </label>
+                                            <% }) %>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-danger px-5 py-2">Update Listing</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>

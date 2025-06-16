@@ -1,0 +1,495 @@
+/* === Listing Card Wider Layout === */
+.container {
+    max-width: 100%;
+}
+
+.listing-detail-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    perspective: 1000px;
+}
+
+/* Hover effect */
+.listing-detail-card:hover {
+    transform: translateY(-8px) scale(1.02) rotateX(1deg);
+    box-shadow: 0 18px 40px rgba(217, 4, 41, 0.2);
+}
+
+/* === Listing Image Styling === */
+.listing-img {
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-height: 500px;
+    object-fit: cover;
+    width: 100%;
+}
+
+
+/* === Image Gallery Wrapper === */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* === Individual Gallery Image Styling === */
+.gallery-img {
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    width: calc(25% - 1rem);
+    /* 4 images per row on large screens */
+    height: 220px;
+    transition: transform 0.4s ease, flex 0.4s ease;
+    cursor: pointer;
+}
+
+/* === Hover Effects === */
+.image-gallery:hover .gallery-img {
+    transform: scale(0.9);
+    opacity: 0.8;
+}
+
+.image-gallery .gallery-img:hover {
+    transform: scale(1.2);
+    opacity: 1;
+    z-index: 1;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 992px) {
+    .gallery-img {
+        width: calc(50% - 1rem);
+        /* 2 per row on medium */
+        height: 180px;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-img {
+        width: 100%;
+        /* 1 per row on small */
+        height: auto;
+    }
+
+    .image-gallery:hover .gallery-img {
+        transform: scale(1);
+        /* Disable shrink on small for better UX */
+        opacity: 1;
+    }
+
+    .image-gallery .gallery-img:hover {
+        transform: scale(1.02);
+        /* Slight zoom only */
+    }
+}
+
+
+
+
+
+/* === Title Styling === */
+.listing-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #d90429;
+    text-align: center;
+    text-shadow: 2px 2px 0 #fff, 4px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* === Animated Title === */
+.animated-title {
+    display: inline-block;
+    animation: popTitle 1s ease-out forwards;
+    transform: scale(0.95);
+}
+
+/* === Pop Animation === */
+@keyframes popTitle {
+    0% {
+        transform: scale(0.7) rotateX(20deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+/* === Icon Bouncing === */
+.listing-title i {
+    color: #d90429;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+    animation: bounceIcon 1.5s ease infinite;
+}
+
+@keyframes bounceIcon {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* Description */
+.listing-desc {
+    font-size: 1.1rem;
+}
+
+/* Buttons */
+.btn-outline-danger,
+.btn-danger {
+    transition: all 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+    background-color: #d90429;
+    color: #fff;
+    border-color: #d90429;
+    box-shadow: 0 0 10px rgba(217, 4, 41, 0.4);
+}
+
+.btn-danger:hover {
+    background-color: #a50320;
+    box-shadow: 0 0 10px rgba(217, 4, 41, 0.5);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 576px) {
+    .listing-detail-card {
+        padding: 1.2rem;
+    }
+
+    .listing-title {
+        font-size: 1.5rem;
+    }
+
+    .listing-desc {
+        font-size: 1rem;
+    }
+}
+
+
+
+/* ////////////////////////////////////                review form styling  */
+/* === Review Form === */
+
+.reviewForm {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    margin: 3rem auto;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    perspective: 1000px;
+}
+
+
+.reviewForm:hover {
+    transform: translateY(-6px) scale(1.01) rotateX(1deg);
+    box-shadow: 0 20px 40px rgba(217, 4, 41, 0.2);
+    /* red glow on hover */
+}
+
+/* === Heading === */
+.reviewForm h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #d90429;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.reviewForm h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #d90429;
+    margin: 0.5rem auto 0;
+    border-radius: 5px;
+}
+
+/* === Labels: Rating & Comment === */
+.form-label {
+    font-weight: 700;
+    color: #343a40;
+    font-size: 1.1rem;
+}
+
+/* === Comment Box === */
+.form-control {
+    border-radius: 12px;
+    border: 1px solid #ced4da;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #d90429;
+    box-shadow: 0 0 10px rgba(217, 4, 41, 0.3);
+}
+
+/* === Submit Button === */
+.btn-submit-review {
+    /* background-color: transparent; */
+    border: 2px solid #d90429;
+    color: #d90429;
+    font-weight: bold;
+    border-radius: 12px;
+    padding: 0.6rem 1.4rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(217, 4, 41, 0.1);
+    width: 100%;
+}
+
+.btn-submit-review:hover {
+    background-color: #d90429;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(217, 4, 41, 0.4);
+    transform: scale(1.03);
+}
+
+/* === Invalid Feedback === */
+.invalid-feedback {
+    color: #dc3545;
+    font-weight: 500;
+    margin-top: 0.3rem;
+}
+
+/* === Star Rating === */
+.star-rating {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    gap: 0.4rem;
+}
+
+.star-rating i {
+    transition: color 0.3s;
+}
+
+.star-rating i.hovered,
+.star-rating i.selected {
+    color: #ffd700;
+    /* yellow on hover/click */
+}
+
+/* === Responsive Fixes === */
+@media (max-width: 576px) {
+    .reviewForm {
+        padding: 1.2rem;
+    }
+
+    .reviewForm h2 {
+        font-size: 1.6rem;
+    }
+
+    .form-label {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* === Scroll Wrapper to limit height === */
+
+
+/* === Review Container Styling (Grid Style) === */
+
+
+.review-heading {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #d90429;
+    background: linear-gradient(to right, #fff, #f8d7da, #fff);
+    padding: 0.75rem 1.5rem;
+    border-left: 8px solid #d90429;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(217, 4, 41, 0.2);
+    width: fit-content;
+    margin: 1rem auto 1rem auto;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.review-heading:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 28px rgba(217, 4, 41, 0.35);
+}
+
+
+.allReviewContainer {
+    max-height: 54vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+
+.reviewContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+/* === Review Card Styling === */
+.review-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(217, 4, 41, 0.08);
+    padding: 1.2rem 1.4rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 6px solid #d90429;
+    width: calc(50% - 1rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* === Hover Effect === */
+.review-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(217, 4, 41, 0.2);
+}
+
+/* === Review Header === */
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* === Name Styling === */
+.review-name {
+    font-weight: 600;
+    color: #343a40;
+    font-size: 1rem;
+}
+
+/* === Star Rating Styling === */
+.review-rating i {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.review-rating .text-warning {
+    color: #ffc107 !important;
+    /* Yellow filled stars */
+}
+
+.review-rating .text-muted {
+    color: #ddd !important;
+    /* Gray empty stars */
+}
+
+/* === Comment Styling === */
+.review-comment {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #444;
+    margin-top: 0.8rem;
+}
+
+/* === Delete Button Styling (Small Red Button) === */
+.review-card form .btn-danger {
+    background-color: transparent;
+    border: 1px solid #dd506892;
+    color: #d90429;
+    font-weight: bold;
+    font-size: 0.875rem;
+    border-radius: 10px;
+    padding: 0.4rem 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(217, 4, 41, 0.08);
+    width: fit-content;
+    align-self: flex-end;
+    margin-top: 1rem;
+}
+
+.review-card form .btn-danger:hover {
+    background-color: #d90429;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(217, 4, 41, 0.3);
+    transform: scale(1.04);
+}
+
+/* === Responsive Layout: 1 Card Per Row on Small Screens === */
+@media (max-width: 768px) {
+    .review-card {
+        width: 100%;
+    }
+}
+
+
+
+/* ///////////////////////////          for map  */
+
+/* === Map Section Title === */
+.map-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #d90429;
+    text-shadow: 2px 2px 0 #fff, 3px 3px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    animation: popTitle 1s ease-out forwards;
+    margin-bottom: 1rem;
+}
+
+.map-title i {
+    animation: bounceIcon 1.5s ease infinite;
+    font-size: 1.5rem;
+    color: #d90429;
+}
+
+/* === Map Container === */
+.custom-map-container {
+    width: 100%;
+    min-height: 400px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    border: 3px solid rgba(217, 4, 41, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-map-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 18px 40px rgba(217, 4, 41, 0.2);
+}
+
+/* === Responsive Tweaks === */
+@media (max-width: 768px) {
+    .map-title {
+        font-size: 1.6rem;
+    }
+}

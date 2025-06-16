@@ -1,0 +1,65 @@
+.flash-message {
+    font-weight: 600;
+    border-radius: 14px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    margin: 1rem auto;
+    max-width: 720px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease-in-out;
+    transform-origin: top center;
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+    position: relative;
+}
+
+/* Green alert */
+.alert-success {
+    background-color: #e9fcef;
+    color: #155724;
+    border-left: 6px solid #198754;
+}
+
+/* Red alert */
+.alert-danger {
+    background-color: #fdecea;
+    color: #721c24;
+    border-left: 6px solid #d90429;
+}
+
+/* Close button style for light background */
+.btn-close {
+    filter: brightness(0.4);
+}
+
+/* POP-IN animation */
+.flash-pop-in {
+    animation: flashIn 0.4s ease-out forwards;
+}
+
+/* POP-OUT animation */
+.flash-pop-out {
+    animation: flashOut 0.4s ease-in forwards;
+}
+
+@keyframes flashIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes flashOut {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-10px);
+    }
+}

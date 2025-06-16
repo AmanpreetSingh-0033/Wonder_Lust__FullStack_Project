@@ -1,0 +1,57 @@
+<% layout("../layouts/boilerplate") %>
+
+    <body>
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="signup-card p-4">
+                        <h2 class="signup-title text-center mb-4">
+                            Signup for <span class="text-danger">Wander Lust</span>
+                        </h2>
+
+                        <form action="/signup" method="post" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="username" class="form-label fw-bold">Username</label>
+                                <input type="text" id="username" name="username" class="form-control"
+                                    placeholder="Enter username" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter a valid username.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label fw-bold">Email</label>
+                                <input type="email" id="email" name="email" class="form-control"
+                                    placeholder="Enter your email" required>
+                                <div class="valid-feedback">
+                                    Email looks valid!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address.
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="password" class="form-label fw-bold">Password</label>
+                                <input type="password" id="password" name="password" class="form-control"
+                                    placeholder="Create a password" required minlength="6">
+                                <div class="valid-feedback">
+                                    Password looks strong!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Password must be at least 6 characters.
+                                </div>
+                            </div>
+
+                            <button class="btn btn-submit w-100">Sign Up</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
