@@ -33,6 +33,7 @@ const { error } = require('console');
 app.listen(port, () => {
     console.log(`app is listing on port : ${port}`);
 })
+
 app.set("view engine", "ejs");                                              //   set view engine to ejs for use the templating 
 app.set("views", path.join(__dirname, "/views"));                           //   serve path to views directory
 app.use(express.static(path.join(__dirname, "/public")));                   //   serve path to public directory
@@ -41,10 +42,6 @@ app.use(express.json());                                                    //  
 app.use(methodOverride("_method"));                                         //   to override the path method
 app.engine("ejs", ejsMate);                                                 //   ejs mate - use for templating
 
-app.get("/", (req, res) => {                                                // root path
-    console.log("this is a root path");
-    res.render("/listings");
-})
 
 
 ////////////////////////////////// //////////////////////////         setup connection with mongo database
@@ -115,20 +112,23 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
-
 app.use((req, res, next) => {
-    res.locals.success = req.flash("success");          //  assign flash success or error message 
-    res.locals.error = req.flash("error");
-    res.locals.currUser = req.user;
+    res.locals.success = req.flash("success").join(" ") || null;
+    res.locals.error = req.flash("error").join(" ") || null;
+    res.locals.currUser = req.user || null;
     next();
 });
+
 
 
 //////////////////////////////             listings routes   and  reviews routes
 
 
 
+app.get("/", (req, res) => {                                                // root path
+    console.log("this is a root path");
+    res.render("/listings");
+})
 app.use("/listings", listingRouter);                                          //  redirect use to listing routes 
 app.use("/listings/:id/reviews", reviewsRouter);                              //  redirect use to review routes
 app.use("/", userRouter);                                                     //  redirect use to review routes

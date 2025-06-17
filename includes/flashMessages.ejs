@@ -1,4 +1,4 @@
-<% if(success && success.length) { %>
+<% if (success) { %>
     <div class="alert alert-success alert-dismissible fade show flash-message" role="alert">
         <i class="fas fa-check-circle me-2"></i>
         <%= success %>
@@ -6,7 +6,7 @@
     </div>
 <% } %>
 
-<% if(error && error.length) { %>
+<% if (error) { %>
     <div class="alert alert-danger alert-dismissible fade show flash-message" role="alert">
         <i class="fas fa-exclamation-circle me-2"></i>
         <%= error %>

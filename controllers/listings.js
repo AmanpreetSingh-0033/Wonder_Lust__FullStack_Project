@@ -7,11 +7,11 @@ const geocodingClient = mbxGeocoding({ accessToken: mapBoxToken });
 
 module.exports.index = async (req, res) => {                       //  route to show all listings
     let listings = await Listing.find();
-    res.render("listings/index.ejs", { listings });
+    res.render("listings/index", { listings });
 }
 
 module.exports.renderNewForm = (req, res) => {                   // render form to add new listing
-    res.render("listings/new.ejs");
+    res.render("listings/new");
 }
 
 
@@ -63,7 +63,7 @@ module.exports.showListing = async (req, res) => {                //   route to 
         throw new ExpressError(404, "Listing you are looking for, does not exist")
     }
     console.log(listing);
-    res.render("listings/show.ejs", { listing })
+    res.render("listings/show", { listing });
 }
 
 module.exports.renderEditForm = async (req, res) => {                   //  render the edit form
@@ -76,7 +76,8 @@ module.exports.renderEditForm = async (req, res) => {                   //  rend
     let originalImageUrl = listing.image.url;
     originalImageUrl = originalImageUrl.replace("/upload", "/upload/c_fill,h_400,w_400");
 
-    res.render("listings/edit.ejs", { listing, originalImageUrl });
+    res.render("listings/edit", { listing, originalImageUrl });
+    
 }
 
 
