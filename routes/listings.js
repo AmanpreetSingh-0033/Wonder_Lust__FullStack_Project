@@ -28,7 +28,7 @@ router.route("/")
 
 
 
-router.get("/aboutUs",(req,res)=>{
+router.get("/aboutUs", (req, res) => {
     res.render("listings/about.ejs");
 })
 
@@ -58,6 +58,13 @@ router.get("/filters", async (req, res) => {
     }
 });
 
+
+router.get("/myListings", isLoggedIn, wrapAsync(async (req, res) => {
+    let userId = req.user._id;
+    let listings = await Listing.find({ owner: userId });
+
+    res.render("listings/myListings", { listings });
+}));
 
 ////////////////           route to show the listing to be searched
 

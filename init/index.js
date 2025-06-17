@@ -8,7 +8,7 @@ async function main() {
         await mongoose.connect("mongodb://127.0.0.1:27017/Wander-Lust");
         console.log("✅ Connection to database successful");
     } catch (err) {
-        console.error("❌ Database connection error:", err);
+        console.error(" Database connection error:", err);
     }
 }
 
@@ -24,9 +24,9 @@ const initDb = async () => {
         }));
 
         await Listing.insertMany(initData.data); // ← UNCOMMENT THIS LINE to insert data
-        console.log("✅ Database initialized with listings");
+        console.log(" Database initialized with listings");
     } catch (err) {
-        console.error("❌ Error initializing database:", err);
+        console.error(" Error initializing database:", err);
     }
 };
 

@@ -43,13 +43,17 @@ app.engine("ejs", ejsMate);                                                 //  
 
 app.get("/", (req, res) => {                                                // root path
     console.log("this is a root path");
-    res.redirect("/listings");
+    res.render("/listings");
 })
 
 
 ////////////////////////////////// //////////////////////////         setup connection with mongo database
 
 const db_Url = process.env.ATLAS_URL;
+// const local_mongoUrl = process.env.LOCAL_MONGOURL;
+
+// const db_Url = process.env.LOCAL_MONGOURL;
+
 
 main()
     .then((res) => {
@@ -73,8 +77,8 @@ const store = MongoStore.create({
     touchAfter: 24 * 3600
 });
 
-store.on("error",()=>{
-    console.log("Error in MONGO SESSION STORE :  ", error);
+store.on("error",(err)=>{
+    console.log("Error in MONGO SESSION STORE :  ", err);
 })
 
 const sessionOptions = {
