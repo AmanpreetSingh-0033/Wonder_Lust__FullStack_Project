@@ -124,11 +124,11 @@ app.use((req, res, next) => {
 //////////////////////////////             listings routes   and  reviews routes
 
 
-
-app.get("/", (req, res) => {                                                // root path
+app.get("/", (req, res) => {
     console.log("this is a root path");
-    res.render("/listings");
-})
+    res.redirect("/listings"); // 🔁 forward to /listings route
+});
+
 app.use("/listings", listingRouter);                                          //  redirect use to listing routes 
 app.use("/listings/:id/reviews", reviewsRouter);                              //  redirect use to review routes
 app.use("/", userRouter);                                                     //  redirect use to review routes
