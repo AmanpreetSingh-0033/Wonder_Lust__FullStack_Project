@@ -1,2 +1,5 @@
 .env
 node_modules/
+
+views/listings/images/*_files/
+*.download
